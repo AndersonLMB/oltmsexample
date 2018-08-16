@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>XYZ Esri</title>
+  <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+  <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+  <script src="jquery/jquery.js"></script>
+  <script src="ol/ol.full.js"></script>
+  <script src="ol/proj4.js"></script>
+  <link rel="stylesheet" type="text/css" href="xyz.css">
+  <link rel="stylesheet" type=" text/css" hfre="ol/ol.css">
+  <script src="xyz.js" defer="defer"></script>
+</head>
+
+<body>
+  <div id="map" class="map"></div>
+  <div id="positionInfo"> </div>
+  <div id="layersInfo">
+    <div id="layersInfoHeader">Layers</div>
+    <div id = "layersInfoContent">
+
+    </div>
+  </div>
+  <!-- <script>
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.XYZ({
+              attributions: 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
+                  'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
+              url: 'https://server.arcgisonline.com/ArcGIS/rest/services/' +
+                  'World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+            })
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([-121.1, 47.5]),
+          zoom: 7
+        })
+      });
+    </script> -->
+  <div>
+
+  </div>
+</body>
+
+</html>
