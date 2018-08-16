@@ -13,12 +13,13 @@ proj4.defs("EPSG:4490", "+proj=longlat +ellps=GRS80 +no_defs");
 var urlTemplate = 'https://services.arcgisonline.com/arcgis/rest/services/' +
     'ESRI_Imagery_World_2D/MapServer/tile/{z}/{y}/{x}';
 //   http://localhost/tdtc/Z1/Y0/X0.png
-var tdtcTemp = "http://localhost/tdtc/Z{z}/Y{y}/X{x}.png"
-
+// var tdtcTemp = "http://localhost/tdtc/Z{z}/Y{y}/X{x}.png"
+//http://t7.tianditu.gov.cn/DataServer?T=vec_c&x=3338&y=760&l=12
+var tdtcTemp = "http://t7.tianditu.gov.cn/DataServer?T=vec_c&x={x}&y={y}&l={z}"
 var view4326 = new ol.View({
     extent: [-180, -90, 180, 90],
     center: [0, 0],
-    zoom: 1,
+    zoom: 2,
     minZoom: 1,
     projection: "EPSG:4326"
 });
@@ -100,7 +101,7 @@ var map = new ol.Map({
         }),
 
         new ol.layer.Tile({
-            opacity: 1,
+            opacity: 0.5,
             source: new ol.source.XYZ({
                 attributions: 'Copyright:© 2013 ESRI, i-cubed, GeoEye',
                 maxZoom: 16,
@@ -116,23 +117,23 @@ var map = new ol.Map({
                 wrapX: true
             })
         }), 
-        new ol.layer.Tile({
-            opacity: 1,
-            source: new ol.source.XYZ({
-                attributions: 'Copyright:© 2013 ESRI, i-cubed, GeoEye',
-                maxZoom: 16,
-                projection: 'EPSG:4326',
-                tileSize: 256,
-                tileUrlFunction: function (tileCoord) {
-                    var input = tileCoord;
-                    var output = tdtcTemp.replace('{z}', (tileCoord[0] ).toString()).replace('{x}', tileCoord[1].toString()).replace('{y}', (-tileCoord[2] - 1).toString()).replace(".png","_.png");
-                    //tdtcTemp urlTemplate
-                    console.log(JSON.stringify(input) + " > " + JSON.stringify(output));
-                    return output;
-                },
-                wrapX: true
-            })
-        }),
+        // new ol.layer.Tile({
+        //     opacity: 0.5,
+        //     source: new ol.source.XYZ({
+        //         attributions: 'Copyright:© 2013 ESRI, i-cubed, GeoEye',
+        //         maxZoom: 16,
+        //         projection: 'EPSG:4326',
+        //         tileSize: 256,
+        //         tileUrlFunction: function (tileCoord) {
+        //             var input = tileCoord;
+        //             var output = tdtcTemp.replace('{z}', (tileCoord[0] ).toString()).replace('{x}', tileCoord[1].toString()).replace('{y}', (-tileCoord[2] - 1).toString()).replace(".png","_.png");
+        //             //tdtcTemp urlTemplate
+        //             console.log(JSON.stringify(input) + " > " + JSON.stringify(output));
+        //             return output;
+        //         },
+        //         wrapX: true
+        //     })
+        // }),
 
         // new ol.layer.Tile({
         //     opacity: 0.6,
